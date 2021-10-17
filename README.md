@@ -7,7 +7,7 @@ Functionality
 
 This class is intended to wrap function modules and dynamically read the "classic" exceptions and automatically turn them into class-based exceptions.
 The idea is that you subclass this main class so that you inherit all the standard functionality and then add in anything extra you need.
-· There is automatic recognition of whether the function module has filled the SY-MSGID variables while raising the classical exceptions (some do not, due to the doofus problem mentioned earlier).
+· There is automatic recognition of whether the function module has filled the SY-MSGID variables while raising the classical exceptions (some do not, due to the doofus problem ).
 · If there are classical exceptions, both the technical name (e.g. MONSTER_ONLY_ONE_INCH_TALL above) and any text description of the exception from the Transaction SE37 definition are captured automatically.
 · You avoid the long string of possible exceptions in the calling code.
 · While debugging, it’s still possible to tell exactly where the exception was raised.
