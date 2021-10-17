@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_FUNCTION_MODULE_WRAPPER</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Function Module Wrapper Superclass</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <LINES>
+    <TLINE>
+     <TDFORMAT>U1</TDFORMAT>
+     <TDLINE>&amp;FUNCTIONALITY&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>AS</TDFORMAT>
+     <TDLINE>This class is intended to wrap function modules and dynamically read the</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>&quot;classic&quot; exceptions and automatically turn them into class based</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>exceptions.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>AS</TDFORMAT>
+     <TDLINE>The idea is that you subclass this main class so that you inherit all</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>the standard functionality and then add in anything extra you need.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>U1</TDFORMAT>
+     <TDLINE>&amp;BENEFITS&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>*</TDFORMAT>
+     <TDLINE>·,,There is automatic recognition of whether the function module has</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>filled the SY-MSGID variables while raising the classical exceptions</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>(some do not, due to the doofus problem mentioned earlier).</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>*</TDFORMAT>
+     <TDLINE>·,,If there are classical exceptions, both the technical name (e.g.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>MONSTER_ONLY_ONE_INCH_TALL above) and any text description of the</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>exception from the Transaction SE37 definition are captured</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>automatically.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>*</TDFORMAT>
+     <TDLINE>·,,You avoid the long string of possible exceptions in the calling code.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>*</TDFORMAT>
+     <TDLINE>·,,While debugging, it’s still possible to tell exactly where the</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>exception was raised.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>*</TDFORMAT>
+     <TDLINE>·,,You can replace the call to the function module with a test double</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>during unit tests.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>*</TDFORMAT>
+     <TDLINE>·,,You can use inline declarations when getting the return parameters.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>*</TDFORMAT>
+     <TDLINE>·,,You can change the chaotic SAP naming conventions for function</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>modules to use a more logical name for your wrapper class—and possibly</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>not name the parameters after German abbreviations (unless you’ve just</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>come to love them after all this time).</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>*</TDFORMAT>
+     <TDLINE>·,,You have better syntax checking: a function module doesn’t complain</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>when you pass in the wrong variable type, but a method does.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>*</TDFORMAT>
+     <TDLINE>·,,Sometimes you can simplify the interface (signature) for function</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>modules that have half a million parameters, most of which never get</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>used.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>U1</TDFORMAT>
+     <TDLINE>&amp;EXAMPLE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>U1</TDFORMAT>
+     <TDLINE>  METHOD golf_handicap_of_monster.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>    remove_existing_messages( ).</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>    CALL FUNCTION &apos;ZMONSTER_GOLF_SCORES&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>      EXPORTING</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>        id_monster_number             = id_monster_number</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>      IMPORTING</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>        ed_golf_handicap              = result</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>      EXCEPTIONS</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>        monster_only_one_inch_tall    = 1</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>        monster_has_no_silly_trousers = 2</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>        OTHERS                        = 3.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>    IF sy-subrc &lt;&gt; 0.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>      TRY.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>          throw_exception_on_error_from( &apos;ZMONSTER_GOLF_SCORES&apos; ).</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>        CATCH zcx_function_module_error INTO</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>DATA(function_module_error).</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>          &quot;Need to raise the excetion here in the calling code in order</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>to get</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>U1</TDFORMAT>
+     <TDLINE>          &quot;the call stack correct</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>          RAISE EXCEPTION function_module_error.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>      ENDTRY.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>    ENDIF.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>U1</TDFORMAT>
+     <TDLINE>&amp;HINTS&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>AS</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>U1</TDFORMAT>
+     <TDLINE>&amp;FURTHER_SOURCES_OF_INF&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>AS</TDFORMAT>
+     <TDLINE>Please read the blog</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>https://blogs.sap.com/2016/10/29/harlem-function-module-shuffle/</TDLINE>
+    </TLINE>
+   </LINES>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_FUNCTION_MODULE_WRAPPER</CLSNAME>
+     <CMPNAME>CALL_STACK_TABLE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>System Callstack Table</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_FUNCTION_MODULE_WRAPPER</CLSNAME>
+     <CMPNAME>DESCRIPTION_OF</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>What was the exception text?</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_FUNCTION_MODULE_WRAPPER</CLSNAME>
+     <CMPNAME>EXCEPTION_NAME</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Exception Name</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_FUNCTION_MODULE_WRAPPER</CLSNAME>
+     <CMPNAME>EXCEPTION_TEXT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Exception Text</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_FUNCTION_MODULE_WRAPPER</CLSNAME>
+     <CMPNAME>FUNCTION_NAME</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Name of Function Module</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_FUNCTION_MODULE_WRAPPER</CLSNAME>
+     <CMPNAME>NO_T100_MESSAGE_WAS_RAISED</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Was a T100 Message Raised?</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_FUNCTION_MODULE_WRAPPER</CLSNAME>
+     <CMPNAME>RETURN_CODE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>ABAP System Field: Return Code of ABAP Statements</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_FUNCTION_MODULE_WRAPPER</CLSNAME>
+     <CMPNAME>THE_EXCEPTION_MAPPED_TO_THE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>What was the exception technical name?</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

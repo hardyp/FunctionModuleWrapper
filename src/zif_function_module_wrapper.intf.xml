@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_INTF" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOINTERF>
+    <CLSNAME>ZIF_FUNCTION_MODULE_WRAPPER</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Function Module Wrapper</DESCRIPT>
+    <EXPOSURE>2</EXPOSURE>
+    <STATE>1</STATE>
+    <UNICODE>X</UNICODE>
+   </VSEOINTERF>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CLSNAME>ZIF_FUNCTION_MODULE_WRAPPER</CLSNAME>
+     <CMPNAME>REMOVE_EXISTING_MESSAGES</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Reset System Message Variables</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZIF_FUNCTION_MODULE_WRAPPER</CLSNAME>
+     <CMPNAME>STORE_EXCEPTION_DETAILS_FROM</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Store Function Module Exception Details</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZIF_FUNCTION_MODULE_WRAPPER</CLSNAME>
+     <CMPNAME>THROW_EXCEPTION_ON_ERROR_FROM</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Throw Exception on Error</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>
